@@ -80,7 +80,7 @@
             ListBoxDisplay.ItemHeight = 15;
             ListBoxDisplay.Location = new Point(12, 136);
             ListBoxDisplay.Name = "ListBoxDisplay";
-            ListBoxDisplay.Size = new Size(521, 334);
+            ListBoxDisplay.Size = new Size(519, 424);
             ListBoxDisplay.TabIndex = 4;
             // 
             // label1
@@ -88,9 +88,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(12, 52);
             label1.Name = "label1";
-            label1.Size = new Size(58, 15);
+            label1.Size = new Size(98, 15);
             label1.TabIndex = 5;
-            label1.Text = "Edit Input";
+            label1.Text = "Edit/Search Input";
             // 
             // btnEditButton
             // 
@@ -106,7 +106,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(545, 488);
+            ClientSize = new Size(543, 576);
             Controls.Add(btnEditButton);
             Controls.Add(label1);
             Controls.Add(ListBoxDisplay);

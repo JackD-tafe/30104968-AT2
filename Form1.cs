@@ -47,7 +47,16 @@ namespace _30104968_AT2_V1
 
         private void btnSearchButton_Click(object sender, EventArgs e)
         {
-            myArray.GetValue(Int32.Parse(textBoxInput.Text));
+            int myIndex = Int32.Parse(textBoxInput.Text);
+
+            if (myArray.Contains(myIndex))
+            {
+                MessageBox.Show($"The data contains {myIndex}");
+            }
+            else
+            {
+                MessageBox.Show($"The data does not contain {myIndex}");
+            }
         }
 
         private void btnEditButton_Click(object sender, EventArgs e)
