@@ -11,6 +11,7 @@ namespace _30104968_AT2_V1
         static int max = 24;
         int[] myArray = new int[max];
         bool empty = true;
+        int emptyPtr = 0;
 
         //Method to display the array that can be re-used in other button clicks.
         private void DisplayArray()
@@ -41,22 +42,43 @@ namespace _30104968_AT2_V1
 
         private void btnSortButton_Click(object sender, EventArgs e)
         {
-            Array.Sort(myArray);
-            DisplayArray();
+            int temp = 0;
+            for (int outer = 0; outer < max - 1; outer++)
+            {
+                for (int inner = 0; inner < max - 1; inner++)
+                {
+                    if (myArray[inner] > myArray[inner + 1])
+                    {
+                        temp = myArray[inner + 1];
+                        myArray[inner + 1] = myArray[inner];
+                        myArray[inner] = temp;
+                    }
+                    DisplayArray();
+                }
+            }
+
         }
 
         private void btnSearchButton_Click(object sender, EventArgs e)
         {
-            int myIndex = Int32.Parse(textBoxInput.Text);
-
-            if (myArray.Contains(myIndex))
+            Array.Sort(myArray, 0, 24);
+            DisplayArray();
+            int indx;
+            if (!(string.IsNullOrEmpty(textBoxInput.Text)))
             {
-                MessageBox.Show($"The data contains {myIndex}");
+                indx = Array.BinarySearch(myArray, 0, 24, int.Parse(textBoxInput.Text));
+                if (indx > -1)
+                {
+                    MessageBox.Show("Success; Item found", "Found Message");
+                    ListBoxDisplay.SetSelected(indx, true);
+                }
+                else
+                {
+                    MessageBox.Show("Search did not find the value", "Not Found");
+                }
             }
-            else
-            {
-                MessageBox.Show($"The data does not contain {myIndex}");
-            }
+            textBoxInput.Clear();
+            textBoxInput.Focus();
         }
 
         private void btnEditButton_Click(object sender, EventArgs e)
