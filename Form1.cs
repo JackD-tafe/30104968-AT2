@@ -5,7 +5,7 @@
 //The program is used to sort data from a local observatory to record the number of neutrino interactions an hour. 
 //Inputs: Random data is inputted. Users can input numbers to search for and can select an item from the data to replace with their inputted number
 //Processes: Sort and Search functions as well as an edit function
-//Outputs: None
+
 namespace _30104968_AT2_V1
 {
     public partial class AstroForm : Form
@@ -34,7 +34,9 @@ namespace _30104968_AT2_V1
             }
             //Error catching
             else
+            {
                 MessageBox.Show("Nothing to display");
+            }            
         }
         //Fills array with random numbers
         Random rnd = new Random();
@@ -61,10 +63,9 @@ namespace _30104968_AT2_V1
                         myArray[inner + 1] = myArray[inner];
                         myArray[inner] = temp;
                     }
-                    DisplayArray();
                 }
             }
-
+            DisplayArray();
         }
 
         private void btnSearchButton_Click(object sender, EventArgs e)
@@ -85,6 +86,10 @@ namespace _30104968_AT2_V1
                     MessageBox.Show("Search did not find the value", "Not Found");
                 }
             }
+            else
+            {
+                MessageBox.Show("Please enter a number in the text box input");
+            }
             textBoxInput.Clear();
             textBoxInput.Focus();
         }
@@ -97,21 +102,93 @@ namespace _30104968_AT2_V1
                 textBoxInput.Clear();
                 DisplayArray();
             }
+            else if (string.IsNullOrEmpty(textBoxInput.Text))
+            {
+                MessageBox.Show("Please enter a number in the text box input");
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnMidExtremeButton_Click(object sender, EventArgs e)
         {
+            if (!empty)
+            {
+                int minExtreme = myArray.Min();
+                int maxExtreme = myArray.Max();
+                int midExtremeIndex = myArray.Length / 2;
 
+                if (myArray.Length % 2 == 0)
+                {
+                    int middleNum1 = myArray[midExtremeIndex - 1];
+                    int middleNum2 = myArray[midExtremeIndex];
+                    double middle = (middleNum1 + middleNum2) / 2.0;
+
+                    listMathBox.Items.Clear();
+                    listMathBox.Items.Add($"Minimum: {minExtreme}");
+                    listMathBox.Items.Add($"Maximum: {maxExtreme}");
+                    listMathBox.Items.Add($"Mid extreme: {middle}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No data present");
+            }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnModeButton_Click(object sender, EventArgs e)
         {
+            if (empty != true)
+            {
+                int highestValue = myArray.OrderByDescending(n => n).First();
 
+                int mode = myArray.GroupBy(i => i).OrderByDescending(f => f.Count()).Select(f => f.Key).FirstOrDefault();
+
+                listMathBox.Items.Clear();
+                listMathBox.Items.Add($"The mode is {mode}");
+            }
+            else
+            {
+                MessageBox.Show("No data present");
+            }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnAverageButton_Click(object sender, EventArgs e)
         {
+            int total = 0;
 
+            if (empty != true)
+            {
+                for (int i = 0; i < myArray.Length; i++)
+                {
+                    total += myArray[i];
+                }
+
+                int sum = total;
+                double average = sum / myArray.Length;
+                listMathBox.Items.Clear();
+                listMathBox.Items.Add($"The average is {average}");
+            }
+            else
+            {
+                MessageBox.Show("No data present");
+            }
+        }
+
+        private void btnRangeButton_Click(object sender, EventArgs e)
+        {
+            if (empty != true)
+            {
+                float minExtreme = myArray.Min();
+                float maxExtreme = myArray.Max();
+
+                float range = maxExtreme - minExtreme;
+
+                listMathBox.Items.Clear();
+                listMathBox.Items.Add($"The range is {range} or {maxExtreme} - {minExtreme}");
+            }
+            else
+            {
+                MessageBox.Show("No data present");
+            }
         }
     }
 }
