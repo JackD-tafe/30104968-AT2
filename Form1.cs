@@ -1,3 +1,11 @@
+// Jack Deathridge, Sprint 1
+//Date: 05/05/2025
+//Version: 2.0
+//Astronomical Form
+//The program is used to sort data from a local observatory to record the number of neutrino interactions an hour. 
+//Inputs: Random data is inputted. Users can input numbers to search for and can select an item from the data to replace with their inputted number
+//Processes: Sort and Search functions as well as an edit function
+//Outputs: None
 namespace _30104968_AT2_V1
 {
     public partial class AstroForm : Form
@@ -89,6 +97,21 @@ namespace _30104968_AT2_V1
                 textBoxInput.Clear();
                 DisplayArray();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
