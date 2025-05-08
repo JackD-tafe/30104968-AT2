@@ -92,7 +92,7 @@ namespace _30104968_AT2_V1
                 indx = Array.BinarySearch(myArray, 0, 24, int.Parse(textBoxInput.Text));
                 if (indx > -1)
                 {
-                    MessageBox.Show("Success; Item found", "Found Message");
+                    MessageBox.Show($"Success; Item found at index {indx}", "Found Message");
                     ListBoxDisplay.SetSelected(indx, true);
                 }
                 else
