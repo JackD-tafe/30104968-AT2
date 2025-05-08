@@ -1,6 +1,6 @@
 // Jack Deathridge, Sprint 1
 //Date: 05/05/2025
-//Version: 2.0
+//Version: 2.1
 //Astronomical Form
 //The program is used to sort data from a local observatory to record the number of neutrino interactions an hour.
 //It has also been adjusted to be able to perform some mathematical calculations on the data set.
