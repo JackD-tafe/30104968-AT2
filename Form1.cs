@@ -1,11 +1,10 @@
 // Jack Deathridge, Sprint 1
 //Date: 05/05/2025
-//Version: 1.0
+//Version: 1.1
 //Astronomical Form
 //The program is used to sort data from a local observatory to record the number of neutrino interactions an hour. 
-//Inputs: Random data is inputted. Users can input numbers to search for and can select an item from the data to replace with their inputted number
-//Processes: Sort and Search functions as well as an edit function
-//Outputs: None
+//The program has functions to sort, search and edit data.
+//Will need to update in future version to handle better error catching
 namespace _30104968_AT2_V1
 {
     public partial class AstroForm : Form
@@ -35,6 +34,7 @@ namespace _30104968_AT2_V1
             else
                 MessageBox.Show("Nothing to display");
         }
+
         //Fills array with random numbers
         Random rnd = new Random();
         private void btnLoadButton_Click(object sender, EventArgs e)
@@ -47,6 +47,8 @@ namespace _30104968_AT2_V1
             DisplayArray();
         }
 
+        //Sorts array using bubble sort algorithm. Searches for first element in array and then checks it against the next
+        //Iterates through until numbers are sorted in ascending order
         private void btnSortButton_Click(object sender, EventArgs e)
         {
             if (!empty)
@@ -65,13 +67,15 @@ namespace _30104968_AT2_V1
                     }
                 }
             }
-            else
+            else //Error catching
             {
                 MessageBox.Show("Please load data first");
             }
             DisplayArray();
         }
 
+        //Search function using binary search, iterates through each element and then selects the element in the text box list
+        //Will need to add error catching for users not entering numbers
         private void btnSearchButton_Click(object sender, EventArgs e)
         {
             Array.Sort(myArray, 0, 24);
@@ -90,7 +94,7 @@ namespace _30104968_AT2_V1
                     MessageBox.Show("Search did not find the value", "Not Found");
                 }
             }
-            else
+            else //user error catching
             {
                 MessageBox.Show("Please enter a number in the text box input");
             }
@@ -98,6 +102,8 @@ namespace _30104968_AT2_V1
             textBoxInput.Focus();
         }
 
+        //Edit button. Requires user to highlight an element in the list box display and enter a number to change it to
+        //Will want to update this in version 2.0
         private void btnEditButton_Click(object sender, EventArgs e)
         {
             if (!empty)
