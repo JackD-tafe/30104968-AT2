@@ -168,6 +168,7 @@
             btnSeqSearchButton.TabIndex = 11;
             btnSeqSearchButton.Text = "SeqSearch";
             btnSeqSearchButton.UseVisualStyleBackColor = true;
+            btnSeqSearchButton.Click += btnSeqSearchButton_Click;
             // 
             // listMathBox
             // 

@@ -2,9 +2,11 @@
 //Date: 05/05/2025
 //Version: 2.0
 //Astronomical Form
-//The program is used to sort data from a local observatory to record the number of neutrino interactions an hour. 
-//Inputs: Random data is inputted. Users can input numbers to search for and can select an item from the data to replace with their inputted number
-//Processes: Sort and Search functions as well as an edit function
+//The program is used to sort data from a local observatory to record the number of neutrino interactions an hour.
+//It has also been adjusted to be able to perform some mathematical calculations on the data set.
+//Program has the ability to search/sort/edit the data set. It can search with two different methodologies. 
+//Program performs calculations to find the mid-extreme, mode, average and range of the data. 
+//Program has been adjusted to have tooltips
 
 namespace _30104968_AT2_V1
 {
@@ -36,7 +38,7 @@ namespace _30104968_AT2_V1
             else
             {
                 MessageBox.Show("Nothing to display");
-            }            
+            }
         }
         //Fills array with random numbers
         Random rnd = new Random();
@@ -48,26 +50,38 @@ namespace _30104968_AT2_V1
             }
             empty = false;
             DisplayArray();
+            listMathBox.Items.Clear();
         }
 
+        //Sorts array using bubble sort algorithm. Searches for first element in array and then checks it against the next
+        //Iterates through until numbers are sorted in ascending order
         private void btnSortButton_Click(object sender, EventArgs e)
         {
-            int temp = 0;
-            for (int outer = 0; outer < max - 1; outer++)
+            if (!empty)
             {
-                for (int inner = 0; inner < max - 1; inner++)
+                int temp = 0;
+                for (int outer = 0; outer < max - 1; outer++)
                 {
-                    if (myArray[inner] > myArray[inner + 1])
+                    for (int inner = 0; inner < max - 1; inner++)
                     {
-                        temp = myArray[inner + 1];
-                        myArray[inner + 1] = myArray[inner];
-                        myArray[inner] = temp;
+                        if (myArray[inner] > myArray[inner + 1])
+                        {
+                            temp = myArray[inner + 1];
+                            myArray[inner + 1] = myArray[inner];
+                            myArray[inner] = temp;
+                        }
                     }
                 }
+            }
+            else //simple error catching
+            {
+                MessageBox.Show("Please load data first");
             }
             DisplayArray();
         }
 
+        //Search function using binary search, iterates through each element and then selects the element in the text box list
+        //Will need to add error catching for users not entering numbers
         private void btnSearchButton_Click(object sender, EventArgs e)
         {
             Array.Sort(myArray, 0, 24);
@@ -94,6 +108,8 @@ namespace _30104968_AT2_V1
             textBoxInput.Focus();
         }
 
+        //Edit button. Requires user to highlight an element in the list box display and enter a number to change it to
+        //Will want to update this in version 2.0
         private void btnEditButton_Click(object sender, EventArgs e)
         {
             if (!empty)
@@ -107,6 +123,8 @@ namespace _30104968_AT2_V1
                 MessageBox.Show("Please enter a number in the text box input");
             }
         }
+
+        //Button to calculate the mid-extreme. min/max are found and the middle is found via arraylength/2.
 
         private void btnMidExtremeButton_Click(object sender, EventArgs e)
         {
@@ -134,6 +152,7 @@ namespace _30104968_AT2_V1
             }
         }
 
+        //Mode Calculation, arranges the values by descending order, finds the most frequently occuring value
         private void btnModeButton_Click(object sender, EventArgs e)
         {
             if (empty != true)
@@ -141,9 +160,9 @@ namespace _30104968_AT2_V1
                 int highestValue = myArray.OrderByDescending(n => n).First();
 
                 int mode = myArray.GroupBy(i => i).OrderByDescending(f => f.Count()).Select(f => f.Key).FirstOrDefault();
-
+                int frequency = myArray.Where(n => n == mode).Count();
                 listMathBox.Items.Clear();
-                listMathBox.Items.Add($"The mode is {mode}");
+                listMathBox.Items.Add($"The mode is {mode} and occured {frequency} times");
             }
             else
             {
@@ -151,6 +170,7 @@ namespace _30104968_AT2_V1
             }
         }
 
+        //Calculates the average, just the sum of all elements divided by the amount of elements
         private void btnAverageButton_Click(object sender, EventArgs e)
         {
             int total = 0;
@@ -173,6 +193,7 @@ namespace _30104968_AT2_V1
             }
         }
 
+        //Calculates the range, largest number - lowest number = range
         private void btnRangeButton_Click(object sender, EventArgs e)
         {
             if (empty != true)
@@ -188,6 +209,31 @@ namespace _30104968_AT2_V1
             else
             {
                 MessageBox.Show("No data present");
+            }
+        }
+
+        //Sequential search or linear search. Just a for loop to iterate through each element of the array and a couple if loops for error catching.
+        private void btnSeqSearchButton_Click(object sender, EventArgs e)
+        {
+            int indx;
+            bool found = false;
+            if (!(Int32.TryParse(textBoxInput.Text, out indx)))
+            {
+                MessageBox.Show("Please enter an integer");
+                return;
+            }
+            for (int x = 0; x < max; x++)
+            {
+                if (myArray[x] == indx)
+                {
+                    MessageBox.Show($"Item found at index {x}");
+                    ListBoxDisplay.SetSelected(x, true);
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                MessageBox.Show("Not found, try again");
             }
         }
     }
