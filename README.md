@@ -1,2 +1,2 @@
 This program aims to record data for astronomical research purposes. When you press the "Load data" button on the interface, an array of 24 elements will be displayed. From the elements you are able to sort them from lowest to highest as well as search through them for specific values by entering a number in the input box and clicking search.
-This form is made by Jack Deathridge 30104968. This is the second version of the form and we are up to version 2. 
+This form is made by Jack Deathridge 30104968. This is the first version of the form, we are at version 1.1
