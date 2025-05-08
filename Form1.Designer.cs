@@ -102,6 +102,53 @@
             btnEditButton.UseVisualStyleBackColor = true;
             btnEditButton.Click += btnEditButton_Click;
             // 
+            // btnMidExtremeButton
+            // 
+            btnMidExtremeButton.Location = new Point(199, 44);
+            btnMidExtremeButton.Name = "btnMidExtremeButton";
+            btnMidExtremeButton.Size = new Size(75, 23);
+            btnMidExtremeButton.TabIndex = 7;
+            btnMidExtremeButton.Text = "MidEx";
+            btnMidExtremeButton.UseVisualStyleBackColor = true;
+            btnMidExtremeButton.Click += button1_Click;
+            // 
+            // btnModeButton
+            // 
+            btnModeButton.Location = new Point(280, 44);
+            btnModeButton.Name = "btnModeButton";
+            btnModeButton.Size = new Size(75, 23);
+            btnModeButton.TabIndex = 8;
+            btnModeButton.Text = "Mode";
+            btnModeButton.UseVisualStyleBackColor = true;
+            // 
+            // btnAverageButton
+            // 
+            btnAverageButton.Location = new Point(361, 44);
+            btnAverageButton.Name = "btnAverageButton";
+            btnAverageButton.Size = new Size(75, 23);
+            btnAverageButton.TabIndex = 9;
+            btnAverageButton.Text = "Average";
+            btnAverageButton.UseVisualStyleBackColor = true;
+            // 
+            // btnRangeButton
+            // 
+            btnRangeButton.Location = new Point(442, 44);
+            btnRangeButton.Name = "btnRangeButton";
+            btnRangeButton.Size = new Size(75, 23);
+            btnRangeButton.TabIndex = 10;
+            btnRangeButton.Text = "Range";
+            btnRangeButton.UseVisualStyleBackColor = true;
+            // 
+            // btnSeqSearchButton
+            // 
+            btnSeqSearchButton.Location = new Point(199, 73);
+            btnSeqSearchButton.Name = "btnSeqSearchButton";
+            btnSeqSearchButton.Size = new Size(75, 23);
+            btnSeqSearchButton.TabIndex = 11;
+            btnSeqSearchButton.Text = "SeqSearch";
+            btnSeqSearchButton.UseVisualStyleBackColor = true;
+            btnSeqSearchButton.Click += button1_Click_1;
+            // 
             // AstroForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);

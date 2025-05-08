@@ -1,3 +1,11 @@
+// Jack Deathridge, Sprint 1
+//Date: 05/05/2025
+//Version: 1.0
+//Astronomical Form
+//The program is used to sort data from a local observatory to record the number of neutrino interactions an hour. 
+//Inputs: Random data is inputted. Users can input numbers to search for and can select an item from the data to replace with their inputted number
+//Processes: Sort and Search functions as well as an edit function
+//Outputs: None
 namespace _30104968_AT2_V1
 {
     public partial class AstroForm : Form
@@ -11,7 +19,6 @@ namespace _30104968_AT2_V1
         static int max = 24;
         int[] myArray = new int[max];
         bool empty = true;
-        int emptyPtr = 0;
 
         //Method to display the array that can be re-used in other button clicks.
         private void DisplayArray()
@@ -42,21 +49,27 @@ namespace _30104968_AT2_V1
 
         private void btnSortButton_Click(object sender, EventArgs e)
         {
-            int temp = 0;
-            for (int outer = 0; outer < max - 1; outer++)
+            if (!empty)
             {
-                for (int inner = 0; inner < max - 1; inner++)
+                int temp = 0;
+                for (int outer = 0; outer < max - 1; outer++)
                 {
-                    if (myArray[inner] > myArray[inner + 1])
+                    for (int inner = 0; inner < max - 1; inner++)
                     {
-                        temp = myArray[inner + 1];
-                        myArray[inner + 1] = myArray[inner];
-                        myArray[inner] = temp;
+                        if (myArray[inner] > myArray[inner + 1])
+                        {
+                            temp = myArray[inner + 1];
+                            myArray[inner + 1] = myArray[inner];
+                            myArray[inner] = temp;
+                        }
                     }
-                    DisplayArray();
                 }
             }
-
+            else
+            {
+                MessageBox.Show("Please load data first");
+            }
+            DisplayArray();
         }
 
         private void btnSearchButton_Click(object sender, EventArgs e)
@@ -77,6 +90,10 @@ namespace _30104968_AT2_V1
                     MessageBox.Show("Search did not find the value", "Not Found");
                 }
             }
+            else
+            {
+                MessageBox.Show("Please enter a number in the text box input");
+            }
             textBoxInput.Clear();
             textBoxInput.Focus();
         }
@@ -88,6 +105,10 @@ namespace _30104968_AT2_V1
                 myArray[ListBoxDisplay.SelectedIndex] = Int32.Parse(textBoxInput.Text);
                 textBoxInput.Clear();
                 DisplayArray();
+            }
+            else if (string.IsNullOrEmpty(textBoxInput.Text))
+            {
+                MessageBox.Show("Please enter a number in the text box input");
             }
         }
     }
