@@ -8,7 +8,7 @@
 //Program performs calculations to find the mid-extreme, mode, average and range of the data. 
 //Program has been adjusted to have tooltips
 
-namespace _30104968_AT2_V1
+namespace _30104968_AT2_V1 //Not sure how to rename namespace without crashing whole program.
 {
     public partial class AstroForm : Form
     {
