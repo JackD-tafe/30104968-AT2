@@ -155,7 +155,7 @@ namespace _30104968_AT2_V1 //Not sure how to rename namespace without crashing w
         //Mode Calculation, arranges the values by descending order, finds the most frequently occuring value
         private void btnModeButton_Click(object sender, EventArgs e)
         {
-            if (empty != true)
+            if (!empty)
             {
                 int highestValue = myArray.OrderByDescending(n => n).First();
 
@@ -175,7 +175,7 @@ namespace _30104968_AT2_V1 //Not sure how to rename namespace without crashing w
         {
             int total = 0;
 
-            if (empty != true)
+            if (!empty)
             {
                 for (int i = 0; i < myArray.Length; i++)
                 {
@@ -196,7 +196,7 @@ namespace _30104968_AT2_V1 //Not sure how to rename namespace without crashing w
         //Calculates the range, largest number - lowest number = range
         private void btnRangeButton_Click(object sender, EventArgs e)
         {
-            if (empty != true)
+            if (!empty)
             {
                 float minExtreme = myArray.Min();
                 float maxExtreme = myArray.Max();
