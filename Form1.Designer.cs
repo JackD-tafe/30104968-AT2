@@ -167,6 +167,7 @@
             btnSeqSearchButton.Size = new Size(75, 23);
             btnSeqSearchButton.TabIndex = 11;
             btnSeqSearchButton.Text = "SeqSearch";
+            toolTip1.SetToolTip(btnSeqSearchButton, "This button searches the data for your entered number using sequential search algorithm");
             btnSeqSearchButton.UseVisualStyleBackColor = true;
             btnSeqSearchButton.Click += btnSeqSearchButton_Click;
             // 
